@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+const inter = Inter({
+  subsets: ["latin"],
   variable: "--font-sans",
-  weight: "100 900",
-});
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
 });
 
 export const metadata: Metadata = {
   title: "AI Interview Coach",
-  description: "AI-powered interview coaching application",
+  description:
+    "Practice technical interviews with an AI-powered interviewer",
 };
 
 export default function RootLayout({
@@ -25,8 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} font-sans dark`}>
-      <body className={`${geistMono.variable} antialiased bg-[#030014] text-slate-100 min-h-screen`}>{children}</body>
+    <html lang="en" className="dark">
+      <body
+        className={`${inter.variable} font-sans antialiased min-h-screen bg-slate-950 text-slate-100`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
