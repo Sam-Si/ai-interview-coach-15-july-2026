@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routers.interview import router as interview_router
 from routers.report import router as report_router
+from routers.logging import router as logging_router
 
 app = FastAPI(title="AI Interview Coach API")
 
@@ -16,6 +17,7 @@ app.add_middleware(
 
 app.include_router(interview_router, prefix="/api/interview")
 app.include_router(report_router, prefix="/api/report")
+app.include_router(logging_router, prefix="/api")
 
 
 @app.get("/")
